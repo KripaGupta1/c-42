@@ -11,6 +11,12 @@ var form, player, game;
 var cars, car1, car2, car3, car4;
 var track, car1_img, car2_img, car3_img, car4_img;
 
+var f1,f2;
+var carSound;
+var w,h;
+
+var obstaclesGroup;
+
 function preload(){
   track = loadImage("../images/track.jpg");
   car1_img = loadImage("../images/car1.png");
@@ -18,6 +24,9 @@ function preload(){
   car3_img = loadImage("../images/car3.png");
   car4_img = loadImage("../images/car4.png");
   ground = loadImage("../images/ground.png");
+  f2 = loadImage("../images/f1.png");
+  carSound = loadSound("../sound/sliding.mp3");
+
 }
 
 function setup(){
@@ -33,6 +42,20 @@ function setup(){
   game = new Game();
   game.getState();
   game.start();
+
+  obstaclesGroup = new Group();
+  for(var i = 0; i<5 ; i++) {
+
+  w=random(200,950);
+  h=random(-height*4,height-300);
+
+  f1 = createSprite(w,h);
+  f1.addImage(f2);
+
+  obstaclesGroup.add(f1);
+
+  }
+
 }
 
 
